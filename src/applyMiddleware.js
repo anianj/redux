@@ -21,7 +21,7 @@ export default function applyMiddleware(...middlewares) {
     const store = createStore(reducer, preloadedState, enhancer)
     let dispatch = store.dispatch
     let chain = []
-
+    // {getState,dispatch} passed into middleware like thunk
     const middlewareAPI = {
       getState: store.getState,
       dispatch: (action) => dispatch(action)
