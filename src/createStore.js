@@ -37,6 +37,7 @@ export const ActionTypes = {
  * and subscribe to changes.
  */
 export default function createStore(reducer, preloadedState, enhancer) {
+  // if initial state is not provided, but enhance is provided.
   if (typeof preloadedState === 'function' && typeof enhancer === 'undefined') {
     enhancer = preloadedState
     preloadedState = undefined
@@ -46,7 +47,7 @@ export default function createStore(reducer, preloadedState, enhancer) {
     if (typeof enhancer !== 'function') {
       throw new Error('Expected the enhancer to be a function.')
     }
-
+    // enhancer, typically to be applyMiddleware which is shiped with redux itself;
     return enhancer(createStore)(reducer, preloadedState)
   }
 
